@@ -17,17 +17,14 @@ public class Main {
 	static final String FILE_NAME = "text.txt";
 	static final OutputStream SYSTEM_OUTPUT = System.out;
 	static ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	static PrintStream printStream = new PrintStream(baos);
 	
 	
 	public static void main(String[] args) {
 		// TODO readText
-		PrintStream p = new PrintStream(baos);
-		System.setOut(p);
-		hoge3(FILE_NAME);
-		hoge1(System.currentTimeMillis());
-		hoge("Jacob Wilson");
-		printString();
-		
+		printFile(FILE_NAME);
+		printTime(System.currentTimeMillis());
+		printName("Jacob Wilson");
 	}
 	
 	public static void printString(){
@@ -38,14 +35,16 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	// TODO out name
-	public static void hoge(String name) {
+	public static void printName(String name) {
 		System.out.println(name);
 
 	}
 	// TODO
-	public static void hoge1(long time) {
+	public static void printTime(long time) {
 		Date date = new Date(time);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
 		String output = simpleDateFormat.format(date);
@@ -56,7 +55,7 @@ public class Main {
 
 	}
 	//TODO readText
-	public static void hoge3(String filename) {
+	public static void printFile(String filename) {
 
 		String output = null;
 		try {

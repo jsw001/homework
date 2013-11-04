@@ -16,19 +16,24 @@ import org.junit.Test;
 
 
 public class MainTest {
-
-	@Test
-	public void testHoge3() {
-		OutputStream os = System.out;
-		Main.hoge3(os, "text.txt");
-		assert("text".equals(os.toString()));
+	
+	@Before
+	public void setUp(){
+		System.setOut(Main.printStream);
 	}
 	
 	@Test
+	public void testPrintName() {
+		String nameTest = "nothing";
+		Main.printName(nameTest);
+		assert(nameTest.equals(Main.baos.toString()));
+	}
+	
+
 	public void testHoge1() {
 		OutputStream os = System.out;
 		long time = System.currentTimeMillis();
-		Main.hoge1(os, time);
+		//Main.hoge1(os, time);
 		String a = "assmonster";
 		try {
 			os.write(a.getBytes());
