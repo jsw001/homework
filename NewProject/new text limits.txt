@@ -1,0 +1,27 @@
+Receiver - First = 15
+	Last = 15
+	PostCode = 7
+	Address = 23
+	Address2 = 23
+	Building Name = 23
+	Phone Number = 15
+	Email = 50
+	Title = 10
+
+Sender -
+	Japan
+		Title = unlimited
+		LastName = 14 (13) (26)
+		FirstName = 14
+			Subnames = 14
+		PostCode = 7
+		Address1 = 23
+		Address2 = 23
+		Phone = 15
+		email = 50
+		FullWidth Charas = 7;
+	Foreign
+		Title = unlimited
+		LastName = 14
+		FirstName = 14
+		FullWidth Charas = 7;
