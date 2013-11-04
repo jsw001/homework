@@ -23,9 +23,14 @@ public class Main {
 		// TODO readText
 		PrintStream p = new PrintStream(baos);
 		System.setOut(p);
-		hoge3(SYSTEM_OUTPUT, FILE_NAME);
-		hoge1(SYSTEM_OUTPUT, System.currentTimeMillis());
+		hoge3(FILE_NAME);
+		hoge1(System.currentTimeMillis());
 		hoge("Jacob Wilson");
+		printString();
+		
+	}
+	
+	public static void printString(){
 		try {
 			SYSTEM_OUTPUT.write(baos.toByteArray());
 		} catch (IOException e) {
@@ -40,23 +45,18 @@ public class Main {
 
 	}
 	// TODO
-	public static void hoge1(OutputStream outputStream, long time) {
+	public static void hoge1(long time) {
 		Date date = new Date(time);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
 		String output = simpleDateFormat.format(date);
-		try {
-			outputStream.write(output.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println(output);
 	}
 	// TODO date
 	public static void hoge2(OutputStream ouputStream) {
 
 	}
 	//TODO readText
-	public static void hoge3(OutputStream outputStream, String filename) {
+	public static void hoge3(String filename) {
 
 		String output = null;
 		try {
@@ -65,13 +65,7 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			outputStream.write(output.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		System.out.println(output);
 	}
 
 }
