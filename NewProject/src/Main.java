@@ -45,10 +45,15 @@ public class Main {
 	}
 	// TODO
 	public static void printTime(long time) {
+		String output = millisToStringDate(time);
+		System.out.println(output);
+	}
+	
+	public static String millisToStringDate(long time) {
 		Date date = new Date(time);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
 		String output = simpleDateFormat.format(date);
-		System.out.println(output);
+		return output;
 	}
 	// TODO date
 	public static void hoge2(OutputStream ouputStream) {

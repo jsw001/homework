@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.junit.After;
@@ -27,6 +29,24 @@ public class MainTest {
 		String nameTest = "nothing";
 		Main.printName(nameTest);
 		assertEquals(Main.baos.toString().trim(), nameTest.trim());
+		Main.baos.reset();
+	}
+	
+	@Test
+	public void testPrintDate() {
+		long time = System.currentTimeMillis();
+		Main.printTime(time);
+		assertEquals(Main.baos.toString().trim(), Main.millisToStringDate(time).trim());
+		Main.baos.reset();
+	}
+	
+	@Test
+	public void testMillisToStringDate() {
+		long time = System.currentTimeMillis();
+		Date date = new Date(time);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Main.DATE_FORMAT);
+		String dateString = simpleDateFormat.format(date);
+		assertEquals(dateString, Main.millisToStringDate(time));
 	}
 	
 
