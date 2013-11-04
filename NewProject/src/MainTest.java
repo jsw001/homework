@@ -19,54 +19,55 @@ import org.junit.Test;
 
 
 public class MainTest {
+	final static String NAME_TEST = "nothing";
+	final static long CURRENT_TIME = System.currentTimeMillis();
+	static final String FILE_NAME = "testfile.txt";
+	static final String FILE_CONTENTS = "testing";
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		System.setOut(Main.printStream);
 	}
 	
 	@Test
 	public void testPrintName() {
-		String nameTest = "nothing";
-		Main.printName(nameTest);
-		assertEquals(Main.baos.toString().trim(), nameTest.trim());
+		
+		Main.printName(NAME_TEST);
+		assertEquals(Main.baos.toString().trim(), NAME_TEST.trim());
 		Main.baos.reset();
 	}
 	
 	@Test
 	public void testPrintDate() {
-		long time = System.currentTimeMillis();
-		Main.printTime(time);
-		assertEquals(Main.baos.toString().trim(), Main.millisToStringDate(time).trim());
+		
+		Main.printTime(CURRENT_TIME);
+		assertEquals(Main.baos.toString().trim(), Main.millisToStringDate(CURRENT_TIME).trim());
 		Main.baos.reset();
 	}
 	
 	@Test
 	public void testMillisToStringDate() {
-		long time = System.currentTimeMillis();
-		Date date = new Date(time);
+		Date date = new Date(CURRENT_TIME);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Main.DATE_FORMAT);
 		String dateString = simpleDateFormat.format(date);
-		assertEquals(dateString, Main.millisToStringDate(time));
+		assertEquals(dateString, Main.millisToStringDate(CURRENT_TIME));
 	}
 	
 	@Test
-	public void testPrintFile(){
-		String fileName = "testfile.txt";
-		String fileContents = "testing";
+	public void testPrintFile() {
+
 		PrintWriter printWriter = null;
 		try {
-			printWriter = new PrintWriter(fileName);
-			printWriter.write(fileContents);
+			printWriter = new PrintWriter(FILE_NAME);
+			printWriter.write(FILE_CONTENTS);
 			printWriter.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Main.printFile(fileName);
-		assertEquals(Main.baos.toString().trim(), fileContents.trim());
+		Main.printFile(FILE_NAME);
+		assertEquals(Main.baos.toString().trim(), FILE_CONTENTS.trim());
 		Main.baos.reset();
-		
 	}
 	
 
