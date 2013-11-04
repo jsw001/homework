@@ -31,12 +31,19 @@ public class MainTest {
 		System.setOut(printStream);
 	}
 	
+	public boolean assertOutput(String testInput){
+		testInput = testInput.trim();
+		String outputString = baos.toString().trim();
+		boolean result = testInput.equals(outputString);
+		baos.reset();
+		return result;
+	}
+	
 	@Test
 	public void testPrintName() {
 		
 		Main.printName(NAME_TEST);
-		assertEquals(baos.toString().trim(), NAME_TEST.trim());
-		baos.reset();
+		assertTrue(assertOutput(NAME_TEST));
 	}
 	
 	@Test
