@@ -23,26 +23,28 @@ public class MainTest {
 	final static long CURRENT_TIME = System.currentTimeMillis();
 	static final String FILE_NAME = "testfile.txt";
 	static final String FILE_CONTENTS = "testing";
+	static ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	static PrintStream printStream = new PrintStream(baos);
 	
 	@Before
 	public void setUp() {
-		System.setOut(Main.printStream);
+		System.setOut(printStream);
 	}
 	
 	@Test
 	public void testPrintName() {
 		
 		Main.printName(NAME_TEST);
-		assertEquals(Main.baos.toString().trim(), NAME_TEST.trim());
-		Main.baos.reset();
+		assertEquals(baos.toString().trim(), NAME_TEST.trim());
+		baos.reset();
 	}
 	
 	@Test
 	public void testPrintDate() {
 		
 		Main.printTime(CURRENT_TIME);
-		assertEquals(Main.baos.toString().trim(), Main.millisToStringDate(CURRENT_TIME).trim());
-		Main.baos.reset();
+		assertEquals(baos.toString().trim(), Main.millisToStringDate(CURRENT_TIME).trim());
+		baos.reset();
 	}
 	
 	@Test
@@ -55,7 +57,6 @@ public class MainTest {
 	
 	@Test
 	public void testPrintFile() {
-
 		PrintWriter printWriter = null;
 		try {
 			printWriter = new PrintWriter(FILE_NAME);
@@ -66,43 +67,7 @@ public class MainTest {
 			e.printStackTrace();
 		}
 		Main.printFile(FILE_NAME);
-		assertEquals(Main.baos.toString().trim(), FILE_CONTENTS.trim());
-		Main.baos.reset();
+		assertEquals(baos.toString().trim(), FILE_CONTENTS.trim());
+		baos.reset();
 	}
-	
-
-	public void testHoge1() {
-		OutputStream os = System.out;
-		long time = System.currentTimeMillis();
-		//Main.hoge1(os, time);
-		String a = "assmonster";
-		try {
-			os.write(a.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		StringBuilder sb = new StringBuilder();
-		sb.append(os);
-		//assertEquals(os., );
-	}
-	
-	
-
-	public void testHoge2() {
-		Method hoge3;
-		try {
-			 hoge3 = Main.class.getMethod("hoge3");
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	
-
 }
