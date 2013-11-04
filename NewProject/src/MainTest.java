@@ -26,7 +26,7 @@ public class MainTest {
 	public void testPrintName() {
 		String nameTest = "nothing";
 		Main.printName(nameTest);
-		assert(nameTest.equals(Main.baos.toString()));
+		assertEquals(Main.baos.toString().trim(), nameTest.trim());
 	}
 	
 
