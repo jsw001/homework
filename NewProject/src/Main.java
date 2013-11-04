@@ -17,8 +17,6 @@ public class Main {
 	static final String FILE_NAME = "text.txt";
 	static final String PERSON_NAME = "Jacob Wilson";
 	static final OutputStream SYSTEM_OUTPUT = System.out;
-	static ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	static PrintStream printStream = new PrintStream(baos);
 	
 	
 	public static void main(String[] args) {
@@ -28,17 +26,6 @@ public class Main {
 		printName(PERSON_NAME);
 	}
 	
-	public static void printString(){
-		try {
-			SYSTEM_OUTPUT.write(baos.toByteArray());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	
-
 	// TODO out name
 	public static void printName(String name) {
 		System.out.println(name);

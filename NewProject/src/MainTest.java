@@ -21,6 +21,7 @@ import org.junit.Test;
 public class MainTest {
 	final static String NAME_TEST = "nothing";
 	final static long CURRENT_TIME = System.currentTimeMillis();
+	final static String FORMATTED_TIME = Main.millisToStringDate(CURRENT_TIME).trim();
 	static final String FILE_NAME = "testfile.txt";
 	static final String FILE_CONTENTS = "testing";
 	static ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -50,8 +51,7 @@ public class MainTest {
 	public void testPrintDate() {
 		
 		Main.printTime(CURRENT_TIME);
-		assertEquals(baos.toString().trim(), Main.millisToStringDate(CURRENT_TIME).trim());
-		baos.reset();
+		assertTrue(assertOutput(FORMATTED_TIME));
 	}
 	
 	@Test
@@ -74,7 +74,6 @@ public class MainTest {
 			e.printStackTrace();
 		}
 		Main.printFile(FILE_NAME);
-		assertEquals(baos.toString().trim(), FILE_CONTENTS.trim());
-		baos.reset();
-	}
+		assertTrue(assertOutput(FILE_CONTENTS));
+		}
 }
