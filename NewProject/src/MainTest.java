@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +48,25 @@ public class MainTest {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Main.DATE_FORMAT);
 		String dateString = simpleDateFormat.format(date);
 		assertEquals(dateString, Main.millisToStringDate(time));
+	}
+	
+	@Test
+	public void testPrintFile(){
+		String fileName = "testfile.txt";
+		String fileContents = "testing";
+		PrintWriter printWriter = null;
+		try {
+			printWriter = new PrintWriter(fileName);
+			printWriter.write(fileContents);
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Main.printFile(fileName);
+		assertEquals(Main.baos.toString().trim(), fileContents.trim());
+		Main.baos.reset();
+		
 	}
 	
 

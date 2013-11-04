@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Main {
 	static final String DATE_FORMAT = "yyyy-MM-dd";
 	static final String FILE_NAME = "text.txt";
+	static final String PERSON_NAME = "Jacob Wilson";
 	static final OutputStream SYSTEM_OUTPUT = System.out;
 	static ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	static PrintStream printStream = new PrintStream(baos);
@@ -24,7 +25,7 @@ public class Main {
 		// TODO readText
 		printFile(FILE_NAME);
 		printTime(System.currentTimeMillis());
-		printName("Jacob Wilson");
+		printName(PERSON_NAME);
 	}
 	
 	public static void printString(){
