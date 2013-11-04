@@ -16,13 +16,22 @@ public class Main {
 	static final String DATE_FORMAT = "yyyy-MM-dd";
 	static final String FILE_NAME = "text.txt";
 	static final OutputStream SYSTEM_OUTPUT = System.out;
+	static ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	
 	
 	public static void main(String[] args) {
 		// TODO readText
+		PrintStream p = new PrintStream(baos);
+		System.setOut(p);
 		hoge3(SYSTEM_OUTPUT, FILE_NAME);
 		hoge1(SYSTEM_OUTPUT, System.currentTimeMillis());
 		hoge("Jacob Wilson");
+		try {
+			SYSTEM_OUTPUT.write(baos.toByteArray());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// TODO out name
